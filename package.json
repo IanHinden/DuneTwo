@@ -1,0 +1,15 @@
+{
+  "name": "dunetwo",
+  "version": "1.0.0",
+  "description": "An app to help me get into the movie Dune 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "author": "Ian Hinden",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
