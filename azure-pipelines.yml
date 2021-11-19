@@ -22,8 +22,4 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'D2artifact'
-    publishLocation: 'pipeline'
+- task: PublishPipelineArtifact@1 
