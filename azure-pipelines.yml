@@ -23,7 +23,3 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'D2artifact'
-    publishLocation: 'pipeline'
