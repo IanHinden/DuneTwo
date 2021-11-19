@@ -12,6 +12,7 @@ pool:
 steps:
 - script: |
     npm install
+    cd frontend
     npm run build
   displayName: 'npm install and build'
 
