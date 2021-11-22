@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div><App /><Posts /></div>
+    <div><App /></div>
   </React.StrictMode>,
   document.getElementById('root')
 );
