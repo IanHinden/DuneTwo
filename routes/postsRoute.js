@@ -12,8 +12,13 @@ router.route('/createPost').post((req, res) => {
         content
     });
 
-    newPost.save();
-    res.send('Item Saved');
+    try {
+        const newerPost = await newPost.save();
+        res.status(201).send(newerPost);
+    } catch(err) {
+        res.send(err);
+    }
+    //res.send('Item Saved');
 })
 
 module.exports = router;
