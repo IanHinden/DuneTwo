@@ -13,7 +13,7 @@ router.route('/createPost').post((req, res) => {
     });
 
     try {
-        const newerPost = await newPost.save();
+        const newerPost = newPost.save();
         res.status(201).send(newerPost);
     } catch(err) {
         res.send(err);
