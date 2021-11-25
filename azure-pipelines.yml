@@ -9,6 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+- task: NodeTool@0
+  inputs:
+    versionSpec: '6.x'
+
 steps:
 - script: |
     npm install
