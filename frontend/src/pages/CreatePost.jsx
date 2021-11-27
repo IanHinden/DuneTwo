@@ -25,7 +25,7 @@ function CreatePost() {
             content: input.content
         }
         
-        axios.post('http://localhost:5000', newNote);
+        axios.post('http://localhost:5000/createPost', newNote);
     }
 
     return <div className="container">
