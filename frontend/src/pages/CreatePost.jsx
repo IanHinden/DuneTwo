@@ -25,7 +25,7 @@ function CreatePost() {
             content: input.content
         }
         
-        axios.post('https://dunetwo.azurewebsites.net/createPost', newNote);
+        axios.post('http://localhost:5000/createPost', newNote);
     }
 
     return <div className="container">

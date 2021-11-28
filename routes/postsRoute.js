@@ -1,6 +1,6 @@
 const express = require("express");
 router = express.Router();
-//postsRoute = require("../controllers/postsController");
+routesController = require("../controllers/postsController");
 const Post = require('../models/postModel');
 
 //router.get("/", postsRoute.postsController)
@@ -20,5 +20,7 @@ router.route('/createPost').post((req, res) => {
     }
     //res.send('Item Saved');
 })
+
+router.get('/posts', routesController.getAllPosts);
 
 module.exports = router;
