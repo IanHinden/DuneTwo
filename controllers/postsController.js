@@ -1,6 +1,13 @@
+const postModel = require('../models/postModel');
+
 const getAllPosts = (req, res) => {
-    res.json({
-        postsList: ["post 1", "post 2"]
+    postModel.find((err, data) => {
+        if(err){
+            console.log(err)
+        } else {
+            req.data = data;
+            res.send(req.data);
+        }
     })
 }
 

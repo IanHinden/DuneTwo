@@ -20,8 +20,6 @@ app.use('/', require('./routes/postsRoute'));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.use("/posts/", require("./routes/postsRoute"));
-
 app.use(
     express.static(path.join(__dirname, "./frontend/build"))
 );
