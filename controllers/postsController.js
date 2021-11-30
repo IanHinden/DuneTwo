@@ -11,4 +11,20 @@ const getAllPosts = (req, res) => {
     })
 }
 
-module.exports = { getAllPosts }
+const createPost = (req, res) => {
+    const title = req.body.title;
+    const content = req.body.content;
+    const newPost = new postModel({
+        title,
+        content
+    });
+
+    try {
+        const newerPost = newPost.save();
+        res.status(201).send(newerPost);
+    } catch(err) {
+        res.send(err);
+    }
+}
+
+module.exports = { getAllPosts, createPost }
