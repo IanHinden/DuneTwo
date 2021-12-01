@@ -17,6 +17,7 @@ db.once('open', function callback () {
 });
 
 app.use('/', require('./routes/postsRoute'));
+app.use('/', require('./routes/promptRoutes'));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
