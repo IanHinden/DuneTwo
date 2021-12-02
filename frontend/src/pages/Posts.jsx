@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
-//import { getAllPosts } from "../../../controllers/postsController";
+import PostCard from '../components/PostCard'
 
 function Posts() {
     const [posts, setPosts] = useState([]);
@@ -22,16 +22,11 @@ function Posts() {
 
     return <div className="container">
         <h1>Posts</h1>
-        <ul>
+        <div style={{display: "flex", flexWrap: "wrap"}}>
             {posts.map((post) => (
-                <li key={post.title}>
-                    title: {post.title}
-                    content: {post.content}
-                    <hr />
-                    <br />
-                </li>
+                <PostCard title={post.title}/>
             ))}
-        </ul>
+        </div>
     </div>
 }
 
