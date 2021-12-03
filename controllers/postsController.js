@@ -29,4 +29,15 @@ const createPost = (req, res) => {
     }
 }
 
-module.exports = { getAllPosts, createPost }
+const votePost = (req, res) => {
+    postModel.findOneAndUpdate({ _id: req.body.postId }, { $inc: { votes: 1 } }, {new: true },
+        function(err, response) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(req.data);
+        }
+    });
+}
+
+module.exports = { getAllPosts, createPost, votePost }
