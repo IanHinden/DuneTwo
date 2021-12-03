@@ -24,7 +24,7 @@ function Posts() {
         <h1>Posts</h1>
         <div style={{display: "flex", flexWrap: "wrap"}}>
             {posts.map((post) => (
-                <PostCard title={post.title}/>
+                <PostCard key={post.title} title={post.title} votes={post.votes}/>
             ))}
         </div>
     </div>

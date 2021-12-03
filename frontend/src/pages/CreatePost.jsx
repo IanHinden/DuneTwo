@@ -22,7 +22,7 @@ function CreatePost() {
         event.preventDefault();
         const newNote = {
             title: input.title,
-            content: input.content
+            content: input.content,
         }
         
         axios.post('http://localhost:5000/createPost', newNote);

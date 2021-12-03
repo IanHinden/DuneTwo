@@ -14,9 +14,11 @@ const getAllPosts = (req, res) => {
 const createPost = (req, res) => {
     const title = req.body.title;
     const content = req.body.content;
+    const votes = 0;
     const newPost = new postModel({
         title,
-        content
+        content,
+        votes
     });
 
     try {
