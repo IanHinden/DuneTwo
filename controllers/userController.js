@@ -43,4 +43,27 @@ const register = (req, res) => {
     });
 }
 
-module.exports = { register }
+const login = (req, res) => {
+    const { email, password } = req.body;
+  
+    // basic validation
+    if (!email || !password) {
+      return res.status(400).json({ msg: "Please enter all fields" });
+    }
+    //check for existing user
+    User.findOne({ email }).then((user) => {
+      if (!user) return res.status(400).json({ msg: "User does not exist" });
+  
+      // Validate password
+      bcrypt.compare(password, user.password).then((isMatch) => {
+        if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
+  
+        const sessUser = { id: user.id, name: user.name, email: user.email };
+        req.session.user = sessUser; // Auto saves session data in mongo store
+  
+        res.json({ msg: " Logged In Successfully", sessUser }); // sends cookie with sessionID automatically in response
+      });
+    });
+}
+
+module.exports = { register, login }
