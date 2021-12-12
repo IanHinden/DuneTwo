@@ -14,8 +14,6 @@ function Posts() {
             .get('http://localhost:5000/posts')
             .then((res) => {
                 setPosts(res.data);
-                console.log(res.data);
-                console.log("Got em", posts)
             })
             .catch((err) => console.log(err));
     }

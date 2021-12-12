@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 const register = (req, res) => {
     const { name, email, password } = req.body;
@@ -66,4 +67,21 @@ const login = (req, res) => {
     });
 }
 
-module.exports = { register, login }
+const register_login = (req, res, next) => {
+  passport.authenticate("local", function(err, user, info) {
+      if (err) {
+          return res.status(400).json({ errors: err });
+      }
+      if (!user) {
+          return res.status(400).json({ errors: "No user found" });
+      }
+      req.logIn(user, function(err) {
+          if (err) {
+              return res.status(400).json({ errors: err });
+          }
+          return res.status(200).json({ success: `logged in ${user.id}` });
+      });
+  })(req, res, next);
+};
+
+module.exports = { register, login, register_login }
