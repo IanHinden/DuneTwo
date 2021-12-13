@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
+import Login from '../components/Login';
 
 function Home() {
     const [prompts, setPrompts] = useState([]);
@@ -13,14 +14,13 @@ function Home() {
             .get('http://localhost:5000/prompts')
             .then((res) => {
                 setPrompts(res.data);
-                console.log(res.data);
-                console.log("Got em", prompts)
             })
             .catch((err) => console.log(err));
     }
 
     return <div className="container">
         <h1>Home</h1>
+        <Login />
     </div>
 }
 

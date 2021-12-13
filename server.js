@@ -13,6 +13,7 @@ require('dotenv').config()
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false}))
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
@@ -25,7 +26,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: new MongoStore({ mongoUrl: process.env.MONGO_URL}),
     cookie : {
       maxAge:(1000 * 60 * 100)
