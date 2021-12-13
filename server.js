@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const path = require("path");
 const cors = require('cors');
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongoose = require('mongoose');
@@ -21,6 +22,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   console.log("Connection opened");
 });
+
+app.use(cookieParser());
 
 app.use(
   session({

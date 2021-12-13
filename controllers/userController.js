@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { session } = require('passport');
 
 const register = (req, res) => {
     const { name, email, password } = req.body;
@@ -79,7 +80,8 @@ const register_login = (req, res, next) => {
           if (err) {
               return res.status(400).json({ errors: err });
           }
-          return res.status(200).json({ success: `logged in ${user.id}` });
+          let user = req.session.passport.user;
+          return res.status(200).json({ success: `logged in ${user.id}`, user});
       });
   })(req, res, next);
 };
