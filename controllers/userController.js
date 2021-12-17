@@ -80,10 +80,18 @@ const register_login = (req, res, next) => {
           if (err) {
               return res.status(400).json({ errors: err });
           }
-          let user = req.session.passport.user;
           return res.status(200).json({user: {id: user.id}});
       });
   })(req, res, next);
 };
 
-module.exports = { register, login, register_login }
+const logoutUser = (req, res) => {
+  req.session.destroy((err) => {
+    // delete session data from store, using sessionID in cookie
+    if (err) throw err;
+    res.clearCookie("connect.sid"); // clears cookie containing expired sessionID
+    res.send("Logged out successfully");
+  });
+}
+
+module.exports = { register, login, register_login, logoutUser }

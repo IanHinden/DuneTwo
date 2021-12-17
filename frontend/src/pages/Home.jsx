@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import Login from '../components/Login';
+import Logout from '../components/Logout';
 
 function Home() {
     const [prompts, setPrompts] = useState([]);
@@ -21,6 +22,7 @@ function Home() {
     return <div className="container">
         <h1>Home</h1>
         <Login />
+        <Logout />
     </div>
 }
 

@@ -1,6 +1,7 @@
 const postModel = require('../models/postModel');
 
 const getAllPosts = (req, res) => {
+    console.log(req.user);
     postModel.find((err, data) => {
         if(err){
             console.log(err)

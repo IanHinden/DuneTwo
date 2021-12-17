@@ -22,13 +22,13 @@ db.once('open', function callback () {
   console.log("Connection opened");
 });
 
-app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(cookieParser());
 
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new MongoStore({ mongoUrl: process.env.MONGO_URL}),
     cookie : {
       maxAge:(1000 * 60 * 100)
