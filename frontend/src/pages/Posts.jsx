@@ -11,7 +11,10 @@ function Posts() {
 
     const getAllPosts = () => {
         return axios
-            .get('http://localhost:5000/posts')
+            .get('http://localhost:5000/posts', {
+                    withCredentials: true
+                },
+            )
             .then((res) => {
                 setPosts(res.data);
             })

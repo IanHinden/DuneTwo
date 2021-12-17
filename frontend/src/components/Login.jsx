@@ -27,7 +27,7 @@ function SignUpLoginForm() {
         };
         console.log(userData);
         axios
-            .post("http://localhost:5000/register_login", userData)
+            .post("http://localhost:5000/register_login", userData, {withCredentials: true})
             .then(res => {
                 console.log(res);
             })

@@ -12,7 +12,6 @@ const passport = require('./passport');
 
 require('dotenv').config()
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}))
 
@@ -23,7 +22,7 @@ db.once('open', function callback () {
   console.log("Connection opened");
 });
 
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(
   session({
@@ -36,6 +35,22 @@ app.use(
     }  
   })
 );
+
+// Below corsOptions are for Local development
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+// Below corsOptions work in deployment as Docker containers
+const corsOptionsProd = {
+  origin: 'http://localhost',
+  credentials: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions));
 
 app.use(passport.initialize());
 app.use(passport.session());

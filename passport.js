@@ -4,10 +4,12 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 passport.serializeUser((user, done) => {
+    console.log("Serialized", user)
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
+    console.log("This is deserialized");
     User.findById(id, (err, user) => {
         done(err, user);
     });

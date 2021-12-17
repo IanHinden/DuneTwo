@@ -11,7 +11,7 @@ function Home() {
 
     const getAllPrompts = () => {
         return axios
-            .get('http://localhost:5000/prompts')
+            .get('http://localhost:5000/prompts', {withCredentials: true} )
             .then((res) => {
                 setPrompts(res.data);
             })

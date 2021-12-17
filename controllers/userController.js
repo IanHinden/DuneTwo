@@ -81,7 +81,7 @@ const register_login = (req, res, next) => {
               return res.status(400).json({ errors: err });
           }
           let user = req.session.passport.user;
-          return res.status(200).json({ success: `logged in ${user.id}`, user});
+          return res.status(200).json({user: {id: user.id}});
       });
   })(req, res, next);
 };
