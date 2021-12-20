@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useMemo} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import { UserContext } from './UserContext';
@@ -11,20 +11,22 @@ import Posts from './pages/Posts';
 
 
 function App() {
-  const [value, setValue] = useState('hello from context');
+  const [user, setUser] = useState(null);
+
+  const providerValue = useMemo(() => ({user, setUser}), [user, setUser]);
 
   return (
     <div>
       <Router>
+      <UserContext.Provider value={providerValue}>
         <Navbar />
         <Jumbotron />
-        <UserContext.Provider value={{value, setValue}}>
           <Routes>
             <Route path="/" exact element={<Home />}/>
             <Route path="/posts" element={<Posts />}/>
             <Route path="/create" element ={<CreatePost />}/>
           </Routes>
-        </UserContext.Provider>
+      </UserContext.Provider>
       </Router>
     </div>
   );

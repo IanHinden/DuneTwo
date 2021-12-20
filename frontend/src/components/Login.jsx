@@ -3,7 +3,7 @@ import axios from "axios";
 import { UserContext } from "../UserContext";
 
 function SignUpLoginForm() {
-    const {value, setValue} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
     const [input, setInput] = useState({
         email: '',
         password: ''
@@ -32,7 +32,7 @@ function SignUpLoginForm() {
             .post("http://localhost:5000/register_login", userData, {withCredentials: true})
             .then(res => {
                 console.log(res);
-                setValue("Logged in now")
+                setUser(JSON.stringify(res.data.user));
             })
             .catch(err => {
                 console.log(err);

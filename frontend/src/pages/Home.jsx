@@ -6,7 +6,7 @@ import { UserContext } from "../UserContext";
 
 function Home() {
     const [prompts, setPrompts] = useState([]);
-    const {value, setValue} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
         getAllPrompts();
@@ -23,10 +23,11 @@ function Home() {
 
     return <div className="container">
         <h1>Home</h1>
-        <Login value={{value, setValue}}/>
-        <Logout value={{value, setValue}}/>
+        {user ? 
+            <Logout value={{setUser}}/> : <Login value={{setUser}}/>
+        }
         <div>
-            <h1>{value}</h1>
+            <h1>{user}</h1>
         </div>
     </div>
 }

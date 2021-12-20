@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 
 function Logout() {
-    const {value, setValue} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
     const onClick = e => {
         e.preventDefault();
 
@@ -11,7 +11,7 @@ function Logout() {
             .delete("http://localhost:5000/logout", {withCredentials: true})
             .then(res => {
                 console.log(res);
-                setValue("Logged out now")
+                setUser(null);
             })
             .catch(err => {
                 console.log(err);

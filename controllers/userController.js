@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { session } = require('passport');
+const Post = require('../models/postModel');
 
 const register = (req, res) => {
     const { name, email, password } = req.body;
@@ -94,4 +95,12 @@ const logoutUser = (req, res) => {
   });
 }
 
-module.exports = { register, login, register_login, logoutUser }
+const isLoggedIn = (req, res) => {
+  if(req.user){
+    res.send(req.user);
+  } else {
+    res.json({msg: "User not logged in"})
+  }
+}
+
+module.exports = { register, login, register_login, logoutUser, isLoggedIn }
