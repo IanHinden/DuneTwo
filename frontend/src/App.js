@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react'
+import React, {useState, useMemo, useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import { UserContext } from './UserContext';
@@ -11,9 +11,15 @@ import Posts from './pages/Posts';
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem('User'))
+  );
 
   const providerValue = useMemo(() => ({user, setUser}), [user, setUser]);
+
+  useEffect(() => {
+    localStorage.setItem('User', JSON.stringify(user));
+  });
 
   return (
     <div>
