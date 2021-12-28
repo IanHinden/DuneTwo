@@ -19,10 +19,7 @@ function Logout() {
             });
     };
 
-    return <div className="container">
-    <h1>Logout</h1>
-        <button onClick={onClick} className="btn btn-lg btn-info">Logout</button>
-    </div>
+    return <button type="button" className="btn btn-outline-primary" onClick={onClick} className="btn btn-lg btn-info">Logout</button>
 }
 
 export default Logout;
