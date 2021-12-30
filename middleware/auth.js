@@ -3,7 +3,7 @@ module.exports = (req, res, next) => {
     if (req.user) {
       next();
     } else {
-        res.send(401, 'no user');
+        res.status(401).json({'error': 'No user'});
     }
   } catch {
     res.status(401).json({

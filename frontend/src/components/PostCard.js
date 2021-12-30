@@ -10,7 +10,7 @@ function PostCard(props) {
             postId: id,
         }
         return axios
-            .post('http://localhost:5000/vote', newVote)
+            .post('http://localhost:5000/vote', newVote, {withCredentials: true})
             .then((res) => {
                 setCount(count + 1);
             })

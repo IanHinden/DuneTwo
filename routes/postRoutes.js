@@ -7,6 +7,6 @@ postsController = require("../controllers/postsController");
 
 router.post('/createPost', auth, postsController.createPost);
 router.get('/posts', postsController.getAllPosts);
-router.post('/vote', postsController.votePost)
+router.post('/vote', auth, postsController.votePost)
 
 module.exports = router;
