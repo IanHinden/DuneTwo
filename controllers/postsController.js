@@ -1,7 +1,6 @@
 const postModel = require('../models/postModel');
 
 const getAllPosts = (req, res) => {
-    console.log(req.user);
     postModel.find((err, data) => {
         if(err){
             console.log(err)
@@ -15,11 +14,13 @@ const getAllPosts = (req, res) => {
 const createPost = (req, res) => {
     const title = req.body.title;
     const content = req.body.content;
+    const userId = req.user._id.toString();
     const votes = 0;
     const newPost = new postModel({
         title,
         content,
-        votes
+        votes,
+        userId
     });
 
     try {

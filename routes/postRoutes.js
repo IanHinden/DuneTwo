@@ -1,8 +1,11 @@
 const express = require("express");
 router = express.Router();
+
+const auth = require('../middleware/auth');
+
 postsController = require("../controllers/postsController");
 
-router.post('/createPost', postsController.createPost);
+router.post('/createPost', auth, postsController.createPost);
 router.get('/posts', postsController.getAllPosts);
 router.post('/vote', postsController.votePost)
 
