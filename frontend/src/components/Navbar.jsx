@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter, faGithub, faInstagram, faGooglePlus } from "@fortawesome/free-brands-svg-icons"
 import LoginModal from "./LoginModal";
 import Logout from "./Logout";
+import TestModal from "./TestModal";
 import "./Navbar.css";
 
 function Navbar() {
@@ -12,6 +13,7 @@ function Navbar() {
 
     return <div>
         <LoginModal value={{setUser}}/>
+        <TestModal value={{setUser}}/>
         <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
             <div className="container">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
