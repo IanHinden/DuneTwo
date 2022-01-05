@@ -19,7 +19,7 @@ function Logout() {
             });
     };
 
-    return <button type="button" className="btn btn-outline-primary" onClick={onClick} className="btn btn-lg btn-info">Logout</button>
+    return <button type="button" className="btn btn-outline-primary" onClick={onClick}>Logout</button>
 }
 
 export default Logout;

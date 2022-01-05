@@ -5,11 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter, faGithub, faInstagram, faFacebook} from "@fortawesome/free-brands-svg-icons"
 import { UserContext } from "../UserContext";
 
-export default function InfoModal() {
+export default function InfoModal(props) {
     const {setUser} = useContext(UserContext);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => props.setShow(false);
 
     const [input, setInput] = useState({
         email: '',
@@ -38,7 +36,6 @@ export default function InfoModal() {
         axios
             .post("http://localhost:5000/register_login", userData, {withCredentials: true})
             .then(res => {
-                console.log(res);
                 setUser(JSON.stringify(res.data.user));
                 handleClose();
             })
@@ -49,12 +46,8 @@ export default function InfoModal() {
     };
 
     return (
-      <>
-        <Button className="nextButton" onClick={handleShow}>
-          Open Modal
-        </Button>
-  
-        <Modal show={show} onHide={handleClose}>
+      <>  
+        <Modal show={props.show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { UserContext } from "../UserContext";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -10,10 +10,11 @@ import "./Navbar.css";
 
 function Navbar() {
     const {user, setUser} = useContext(UserContext);
+    const [show, setShow] = useState(false);
 
     return <div>
         <LoginModal value={{setUser}}/>
-        <TestModal value={{setUser}}/>
+        <TestModal value={{setUser}} show={show} setShow={setShow}/>
         <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
             <div className="container">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +48,7 @@ function Navbar() {
                         <li className="nav-item">
                             {user ? 
                                 <Logout /> :
-                                <button type="button" className="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#elegantModalForm">Login</button>
+                                <button onClick={() => setShow(true)} type="button" className="btn btn-outline-primary">Login</button>
                             }
                         </li>
                     </ul>
