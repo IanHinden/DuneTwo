@@ -1,18 +1,13 @@
-.nav-link {
+.nav-text {
     text-decoration: none;
-    color: white;
 }
 
 .sm-icons {
-    flex-direction: row;
+    flex-direction: row !important;
 }
 
 @media only screen and (max-width: 960px) {
     .sm-icons .nav-item {
       padding-right: 1em;
     }
-}
-
-.nav-link {
-    color: red;
 }
