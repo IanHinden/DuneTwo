@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { UserContext } from './UserContext';
 
 import Navbar from './components/Navbar';
+import NavbarTest from './components/NavbarTest';
 import Jumbotron from './components/Jumbotron';
 import Home from './pages/Home'
 import CreatePost from './pages/CreatePost';
@@ -25,6 +26,7 @@ function App() {
     <div>
       <Router>
       <UserContext.Provider value={providerValue}>
+        <NavbarTest />
         <Navbar />
         <Jumbotron />
           <Routes>
