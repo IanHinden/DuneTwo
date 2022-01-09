@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios';
 import PostCard from '../components/PostCard'
+import { UserContext } from "../UserContext";
 
 function Posts() {
     const [posts, setPosts] = useState([]);
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
         getAllPosts();
@@ -25,7 +27,7 @@ function Posts() {
         <h1>Posts</h1>
         <div style={{display: "flex", flexWrap: "wrap"}}>
             {posts.map((post) => (
-                <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes}/>
+                <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
             ))}
         </div>
     </div>
