@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import './PostCard.css';
+import { redirect } from "express/lib/response";
 
 function PostCard(props) {
 	const [count, setCount] = useState( props.votes );
@@ -12,7 +13,11 @@ function PostCard(props) {
         return axios
             .post('http://localhost:5000/vote', newVote, {withCredentials: true})
             .then((res) => {
-                setCount(count + 1);
+                if(res.data.Liked){
+                    setCount(count + 1);
+                } else {
+                    setCount(count - 1);
+                }
             })
             .catch((err) => console.log(err));
     }

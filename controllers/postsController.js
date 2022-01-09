@@ -33,13 +33,13 @@ const createPost = (req, res) => {
 
 const votePost = async (req, res) => {
     try {
-        const post = await postModel.findById(req.body.postId); //{ $inc: { votes: 1 } }, {new: true },
+        const post = await postModel.findById(req.body.postId);
         if (!post.likes.includes(req.user._id)) {
             await post.updateOne({ $push: {likes: req.user._id}, $inc: { votes: 1 } });
-            res.status(200).json("Like added");
+            res.status(200).json({"Liked": true});
         } else {
             await post.updateOne({ $pull: {likes: req.user._id}, $inc: { votes: -1 } });
-            res.status(200).json("Like removed");
+            res.status(200).json({"Liked": false});
         }
     } catch (err) {
             res.status(500).json(err);
