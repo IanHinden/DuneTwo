@@ -31,15 +31,19 @@ const createPost = (req, res) => {
     }
 }
 
-const votePost = (req, res) => {
-    postModel.findOneAndUpdate({ _id: req.body.postId }, { $inc: { votes: 1 } }, {new: true },
-        function(err, response) {
-        if (err) {
-            res.send(err);
+const votePost = async (req, res) => {
+    try {
+        const post = await postModel.findById(req.body.postId); //{ $inc: { votes: 1 } }, {new: true },
+        if (!post.likes.includes(req.user._id)) {
+            await post.updateOne({ $push: {likes: req.user._id}, $inc: { votes: 1 } });
+            res.status(200).json("Like added");
         } else {
-            res.send(req.data);
+            await post.updateOne({ $pull: {likes: req.user._id}, $inc: { votes: -1 } });
+            res.status(200).json("Like removed");
         }
-    });
+    } catch (err) {
+            res.status(500).json(err);
+    }
 }
 
 module.exports = { getAllPosts, createPost, votePost }

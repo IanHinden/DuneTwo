@@ -4,7 +4,8 @@ const postSchema = {
     title: String,
     content: String,
     votes: Number,
-    userId: String
+    userId: String,
+    likes: Array
 }
 
 const Post = mongoose.model("Post", postSchema);
