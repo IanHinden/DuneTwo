@@ -20,9 +20,9 @@ function NavbarDiscard() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Link className="nav-text" to="/"><Nav.Link href="/">Home</Nav.Link></Link>
-                        <Link className="nav-text" to="/posts"><Nav.Link href="posts">Posts</Nav.Link></Link>
-                        <Link className="nav-text" to="/create"><Nav.Link href="create">Create</Nav.Link></Link>
+                        <Link className="nav-text nav-link" to="/">Home</Link>
+                        <Link className="nav-text nav-link" to="/posts">Posts</Link>
+                        <Link className="nav-text nav-link" to="/create">Create</Link>
                     </Nav>
                     <Nav className="navbar-nav sm-icons">
                         <li className="nav-item"><a className="nav-link" href="https://twitter.com/orphanshow"><FontAwesomeIcon icon={faTwitter} /></a></li>
