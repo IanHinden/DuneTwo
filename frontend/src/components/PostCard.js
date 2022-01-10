@@ -3,10 +3,12 @@ import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 import { UserContext } from "../UserContext";
+import LoginModal from "./LoginModal";
 import './PostCard.css';
 
 function PostCard(props) {
 	const [count, setCount] = useState( props.votes );
+    const [show, setShow] = useState(false);
     const {user, setUser} = useContext(UserContext);
     const [liked, setLiked] = useState(false)
 
@@ -35,11 +37,14 @@ function PostCard(props) {
     }
 
 	return <div className="card">
-			<p>
-				{props.title}
-			</p>
-            <FontAwesomeIcon onClick={() => voteUp(props.postId)} className = {liked ? "likedIcon" : ""} icon={faThumbsUp} /> 
-				+ {count}
+        <LoginModal value={{setUser}} show={show} setShow={setShow}/>
+		<p>
+			{props.title}
+		</p>
+        {user ? <FontAwesomeIcon onClick={() => voteUp(props.postId)} className = {liked ? "likedIcon" : ""} icon={faThumbsUp} /> :
+        <FontAwesomeIcon onClick={() => setShow(true)} icon={faThumbsUp} />
+        }
+		+ {count}
 	</div>
 }
 
