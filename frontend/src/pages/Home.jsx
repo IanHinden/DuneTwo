@@ -55,43 +55,7 @@ function Home() {
                                 </blockquote>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
-                            <div class="nav tag-cloud">
-                                <a href="#">Design</a>
-                                <a href="#">Development</a>
-                                <a href="#">Travel</a>
-                                <a href="#">Web Design</a>
-                                <a href="#">Marketing</a>
-                                <a href="#">Research</a>
-                                <a href="#">Managment</a>
-                            </div>
                         </article>
-                        <div class="contact-form article-comment">
-                            <h4>Leave a Reply</h4>
-                            <form id="contact-form" method="POST">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input name="Name" id="name" placeholder="Name *" class="form-control" type="text"></input>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input name="Email" id="email" placeholder="Email *" class="form-control" type="email"></input>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea name="message" id="message" placeholder="Your message *" rows="4" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="send">
-                                            <button class="px-btn theme"><span>Submit</span> <i class="arrow"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                     <div class="col-lg-4 m-15px-tb blog-aside">
                         <div class="widget widget-author">
