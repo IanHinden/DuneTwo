@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import {Modal, Button} from 'react-bootstrap';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter, faGithub, faInstagram, faFacebook} from "@fortawesome/free-brands-svg-icons"
+import { faTwitter, faInstagram, faFacebook} from "@fortawesome/free-brands-svg-icons"
 import { UserContext } from "../UserContext";
 import "./LoginModal.css";
 
@@ -33,7 +33,7 @@ export default function InfoModal(props) {
             email: input.email,
             password: input.password
         };
-        console.log(userData);
+
         axios
             .post("http://localhost:5000/register_login", userData, {withCredentials: true})
             .then(res => {

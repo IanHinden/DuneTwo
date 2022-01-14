@@ -16,7 +16,7 @@ function PostCard(props) {
         if({user}.user != null){
             setLiked(props.liked.includes(JSON.parse({user}.user).id))
         }
-    }, []);
+    }, [props.liked, user]);
 
     const voteUp = (id) => {
         const newVote = {
