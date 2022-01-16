@@ -16,21 +16,31 @@ function Voting(props) {
         }
     }, [user]);
 
-    function vote(option) {
-        console.log(option);
+    function vote(option, id) {
+        let newPromptVote = {
+            choice: option,
+            promptId: id,
+        };
+
+        return axios
+            .post('http://localhost:5000/votePrompt', newPromptVote, {withCredentials: true})
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => console.log(err));
     }
 
     return <div>
         <LoginModal value={{setUser}} show={show} setShow={setShow}/>
         <p>{props.prompt}</p>
         <div>
-            <Button variant="secondary" onClick={() => vote(0)}>
+            <Button variant="secondary" onClick={() => vote(0, props.promptId)}>
                 {props.aChoice}
             </Button>
             {props.aVotes}
         </div>
         <div>
-            <Button variant="secondary" onClick={() => vote(1)}>
+            <Button variant="secondary" onClick={() => vote(1, props.promptId)}>
                 {props.bChoice}
             </Button>
             {props.bVotes}

@@ -39,7 +39,7 @@ function Home() {
                     <div className="col-lg-8 m-15px-tb">
                         <article className="article">
                             <div className="article-img">
-                                <Voting prompt={prompts.prompt} aChoice={prompts.aChoice} bChoice={prompts.bChoice} aVotes={prompts.aVotes} bVotes={prompts.bVotes}/>
+                                <Voting prompt={prompts.prompt} promptId={prompts._id} aChoice={prompts.aChoice} bChoice={prompts.bChoice} aVotes={prompts.aVotes} bVotes={prompts.bVotes}/>
                             </div>
                             <div className="article-title">
                                 <h2>{blog.title}</h2>
