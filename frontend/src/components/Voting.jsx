@@ -1,18 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
-import {Button} from 'react-bootstrap';
+import {Button, Label} from 'react-bootstrap';
 import axios from "axios";
 import LoginModal from './LoginModal';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { UserContext } from "../UserContext";
+import './Voting.css';
 
 function Voting(props) {
     const {user, setUser} = useContext(UserContext);
     const [show, setShow] = useState(false);
 
-
     useEffect(() => {
         if({user}.user != null){
-            //console.log(props.liked.includes(JSON.parse({user}.user).id))
+            console.log(user);
         }
     }, [user]);
 
@@ -32,18 +32,23 @@ function Voting(props) {
 
     return <div>
         <LoginModal value={{setUser}} show={show} setShow={setShow}/>
-        <p>{props.prompt}</p>
         <div>
-            <Button variant="secondary" onClick={() => vote(0, props.promptId)}>
-                {props.aChoice}
-            </Button>
-            {props.aVotes}
+            <h1>This Week's Prompt:</h1>
+            <h2 className="prompt">{props.prompt}</h2>
         </div>
-        <div>
-            <Button variant="secondary" onClick={() => vote(1, props.promptId)}>
-                {props.bChoice}
-            </Button>
-            {props.bVotes}
+        <div className="d-flex justify-content-evenly">
+            <div>
+                <Button variant="secondary" onClick={() => vote(0, props.promptId)}>
+                    {props.aChoice}
+                </Button>
+                <p className="votes">Votes: {props.aVotes}</p>
+            </div>
+            <div>
+                <Button variant="secondary" onClick={() => vote(1, props.promptId)}>
+                    {props.bChoice}
+                </Button>
+                <p className="votes">Votes: {props.bVotes}</p>
+            </div>
         </div>
     </div>
 }
