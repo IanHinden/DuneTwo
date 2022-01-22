@@ -49,39 +49,37 @@ export default function InfoModal(props) {
     return (
       <>  
         <Modal show={props.show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="md-form mb-5">
-              <input onChange={handleChange} name="email" value={input.email} type="email" id="Form-email1" className="form-control validate"></input>
-              <label data-error="wrong" data-success="right" htmlFor="Form-email1">Your email</label>
-            </div>
-            <div className="md-form pb-3">
-              <input onChange={handleChange} name="password" type="password" value={input.password} id="Form-pass1" className="form-control validate"></input>
-              <label data-error="wrong" data-success="right" htmlFor="Form-pass1">Your password</label>
-                <p className="font-small blue-text d-flex justify-content-end">Forgot <a href="www.forgot.com" className="blue-text ml-1">
-                  Password?</a></p>
-            </div>
-            <div className="text-center mb-3">
-              <button type="button" onClick={onSubmit} className="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
-            </div>
-            <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
-            with:</p>
-            <div className="row my-3 d-flex justify-content-center">
-              <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faFacebook} /></button>
-              <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-twitter" icon={faTwitter} /></button>
-              <button type="button" className="btn btn-white btn-rounded z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faInstagram} /></button>
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={onSubmit}>
-                Sign In
-            </Button>
-          </Modal.Footer>
+          <div className="modal-content form-elegant">
+            <Modal.Header className="modal-header text-center" closeButton>
+              <Modal.Title className="modal-title w-100 dark-grey-text font-weight-bold my-3"><strong>Login</strong></Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="modal-body mx-4">
+              <div className="md-form mb-5">
+                <input onChange={handleChange} name="email" value={input.email} type="email" id="Form-email1" className="form-control validate"></input>
+                <label data-error="wrong" data-success="right" htmlFor="Form-email1">Your email</label>
+              </div>
+              <div className="md-form pb-3">
+                <input onChange={handleChange} name="password" type="password" value={input.password} id="Form-pass1" className="form-control validate"></input>
+                <label data-error="wrong" data-success="right" htmlFor="Form-pass1">Your password</label>
+                  <p className="font-small blue-text d-flex justify-content-end">Forgot <a href="www.forgot.com" className="blue-text ml-1">
+                    Password?</a></p>
+              </div>
+              <div className="text-center mb-3">
+                <button type="button" onClick={onSubmit} className="btn blue-gradient btn-block btn-rounded">Sign in</button>
+              </div>
+              <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
+              with:</p>
+              <div className="row my-3 d-flex justify-content-around">
+                <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faFacebook} /></button>
+                <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-twitter" icon={faTwitter} /></button>
+                <button type="button" className="btn btn-white btn-rounded z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faInstagram} /></button>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+            <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="#" class="blue-text ml-1">
+              Sign Up</a></p>
+            </Modal.Footer>
+          </div>
         </Modal>
       </>
     );

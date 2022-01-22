@@ -59,20 +59,28 @@ function Voting(props) {
     return <div>
         <LoginModal value={{setUser}} show={show} setShow={setShow}/>
         <div>
-            <h1>This Week's Prompt:</h1>
+            <h1>Which gets me closer to being in Dune 2?</h1>
             <h2 className="prompt">{props.prompt}</h2>
         </div>
         <div className="d-flex justify-content-evenly">
             <div>
+                { user ? 
                 <Button variant={aLikeStatus ? "primary" : "secondary"} onClick={() => vote(0, props.promptId)}>
                     {props.aChoice}
-                </Button>
+                </Button> :
+                <Button variant="secondary" onClick={() => setShow(true)}>
+                    {props.aChoice}
+                </Button> }
                 <p className="votes">Votes: {aVotes}</p>
             </div>
             <div>
+                { user ?
                 <Button variant={bLikeStatus ? "primary" : "secondary"} onClick={() => vote(1, props.promptId)}>
                     {props.bChoice}
-                </Button>
+                </Button> :
+                <Button variant="secondary" onClick={() => setShow(true)}>
+                    {props.bChoice}
+                </Button> }
                 <p className="votes">Votes: {bVotes}</p>
             </div>
         </div>

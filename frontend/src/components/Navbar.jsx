@@ -16,7 +16,7 @@ function NavbarDiscard() {
         <LoginModal value={{setUser}} show={show} setShow={setShow}/>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Help Me Get Into Dune 2</Navbar.Brand>
+                <Navbar.Brand href="#home">Get Me Into Dune 2</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
