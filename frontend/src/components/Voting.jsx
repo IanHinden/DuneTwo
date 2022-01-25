@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import {Button, Label} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import axios from "axios";
 import LoginModal from './LoginModal';
 import { UserContext } from "../UserContext";
@@ -26,7 +26,7 @@ function Voting(props) {
                 setBLikedStatus(props.bLikes.includes(JSON.parse({user}.user).id))
             }
         }
-    }, [user, props.aLikes, props.bLikes]);
+    }, [user, props.aLikes, props.bLikes, props.aVotes, props.bVotes]);
 
     function vote(option, id) {
         let newPromptVote = {

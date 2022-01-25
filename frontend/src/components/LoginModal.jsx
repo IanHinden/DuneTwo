@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import {Modal, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter, faInstagram, faFacebook} from "@fortawesome/free-brands-svg-icons"
@@ -26,7 +26,7 @@ export default function InfoModal(props) {
         })
     }
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         e.preventDefault();
 
         const userData = {
@@ -71,12 +71,12 @@ export default function InfoModal(props) {
               with:</p>
               <div className="row my-3 d-flex justify-content-around">
                 <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faFacebook} /></button>
-                <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-twitter" icon={faTwitter} /></button>
+                <a href="http://localhost:5000/auth/twitter"><button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-twitter" icon={faTwitter} /></button></a>
                 <button type="button" className="btn btn-white btn-rounded z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faInstagram} /></button>
               </div>
             </Modal.Body>
             <Modal.Footer>
-            <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="#" class="blue-text ml-1">
+            <p className="font-small grey-text d-flex justify-content-end">Not a member? <a href="/" className="blue-text ml-1">
               Sign Up</a></p>
             </Modal.Footer>
           </div>

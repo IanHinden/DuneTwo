@@ -1,7 +1,8 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const { session } = require('passport');
+require('../passport');
+//const { session } = require('passport');
 const Post = require('../models/postModel');
 
 const register = (req, res) => {
@@ -95,6 +96,18 @@ const logoutUser = (req, res) => {
   });
 }
 
+const twitter_login = (req, res) => {
+  passport.authenticate('twitter');
+}
+
+const auth_twitter_callback = (req, res) => {
+  passport.authenticate('twitter', { failureRedirect: '/' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/create');
+  }
+}
+
 const isLoggedIn = (req, res) => {
   if(req.user){
     res.send(req.user);
@@ -103,4 +116,4 @@ const isLoggedIn = (req, res) => {
   }
 }
 
-module.exports = { register, login, register_login, logoutUser, isLoggedIn }
+module.exports = { register, login, register_login, logoutUser, isLoggedIn, twitter_login, auth_twitter_callback }

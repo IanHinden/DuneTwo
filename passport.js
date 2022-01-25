@@ -2,6 +2,9 @@ const bcrypt = require("bcryptjs");
 const User = require("./models/userModel");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const TwitterStrategy = require("passport-twitter").Strategy;
+
+require('dotenv').config()
 
 passport.serializeUser((user, done) => {
     console.log("Serialized", user)
@@ -9,6 +12,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
+    console.log("Trying this");
     User.findById(id, (err, user) => {
         done(err, user);
     });
@@ -60,5 +64,31 @@ passport.use(
             });
     })
 );
+
+//Twitter strategy
+passport.use(new TwitterStrategy({
+    consumerKey: process.env.TWITTER_API_KEY,
+    consumerSecret: process.env.TWITTER_API_SECRET,
+    callbackURL: 'http://localhost:5000/auth/twitter/callback',
+    userProfileURL: 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
+    includeEmail: true,
+  },
+  async (token, tokenSecret, profile, cb) => {
+    console.log(profile);
+    User.findOne({ email: profile.emails[0].value })
+    .then(user => {
+        // Create new User
+        if (!user) {
+            return cb(null, false, { message: "No user" });
+        } else {
+            console.log("We got a user", user);
+            return cb(null, user);
+        }
+    })
+    .catch(err => {
+        return cb(null, false, { message: err });
+    });
+  }
+));
 
 module.exports = passport;

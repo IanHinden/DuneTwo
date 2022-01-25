@@ -39,6 +39,7 @@ app.use(
 // Below corsOptions are for Local development
 const corsOptions = {
   origin: 'http://localhost:3000',
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
@@ -50,10 +51,10 @@ const corsOptionsProd = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.use(cors(corsOptions));
-
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cors(corsOptions));
 
 app.use('/', require('./routes/postRoutes'));
 app.use('/', require('./routes/promptRoutes'));
