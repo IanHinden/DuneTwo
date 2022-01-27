@@ -2,6 +2,7 @@ import React, {useState, useMemo, useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import { UserContext } from './UserContext';
+import axios from "axios";
 
 import Navbar from './components/Navbar';
 import Jumbotron from './components/Jumbotron';
@@ -11,14 +12,21 @@ import Posts from './pages/Posts';
 
 
 function App() {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('User'))
-  );
+  const [user, setUser] = useState(null)
 
   const providerValue = useMemo(() => ({user, setUser}), [user, setUser]);
 
   useEffect(() => {
-    localStorage.setItem('User', JSON.stringify(user));
+    axios
+    .get("http://localhost:5000/isLoggedIn", {withCredentials: true})
+    .then(res => {
+        setUser(res.data._id);
+        localStorage.setItem('User', res.data._id);
+    })
+    .catch(err => {
+        console.log(err);
+        console.log(err.response);
+    });
   });
 
   return (

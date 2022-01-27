@@ -19,11 +19,11 @@ function Voting(props) {
 
         if({user}.user != null){
             if(props.aLikes){
-                setALikedStatus(props.aLikes.includes(JSON.parse({user}.user).id))
+                setALikedStatus(props.aLikes.includes(user))
             }
 
             if(props.bLikes){
-                setBLikedStatus(props.bLikes.includes(JSON.parse({user}.user).id))
+                setBLikedStatus(props.bLikes.includes(user))
             }
         }
     }, [user, props.aLikes, props.bLikes, props.aVotes, props.bVotes]);

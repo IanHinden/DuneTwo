@@ -9,6 +9,7 @@ router.get('/login', userController.login);
 router.post('/register_login', userController.register_login);
 //router.get('/auth/twitter', userController.twitter_login);
 //router.get('/auth/twitter/callback', userController.auth_twitter_callback);
+router.get('/isLoggedIn', userController.isLoggedIn);
 router.delete('/logout', userController.logoutUser);
 router.get('/userstatus', userController.isLoggedIn);
 
