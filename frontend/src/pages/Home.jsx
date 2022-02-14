@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserContext } from "../UserContext";
 import Voting from "../components/Voting";
 import './Home.css';
+import config from "../config.json";
 
 function Home() {
     const [prompts, setPrompts] = useState([]);
@@ -16,7 +17,7 @@ function Home() {
 
     const getAllPrompts = () => {
         return axios
-            .get('http://localhost:5000/latestPrompt', {withCredentials: true} )
+            .get(`${config.SERVER_URL}latestPrompt`, {withCredentials: true} )
             .then((res) => {
                 setPrompts(res.data);
             })
@@ -25,7 +26,7 @@ function Home() {
 
     const getLatestBlog = () => {
         return axios
-            .get('http://localhost:5000/latestBlog', {withCredentials: true} )
+            .get(`${config.SERVER_URL}latestBlog`, {withCredentials: true} )
             .then((res) => {
                 setBlog(res.data);
             })
