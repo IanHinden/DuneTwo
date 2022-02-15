@@ -1,6 +1,8 @@
 import React, {useState, useMemo, useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
+import config from "./config.json";
+
 import { UserContext } from './UserContext';
 import axios from "axios";
 
@@ -18,7 +20,7 @@ function App() {
 
   useEffect(() => {
     axios
-    .get("http://localhost:5000/isLoggedIn", {withCredentials: true})
+    .get(`${config.SERVER_URL}/isLoggedIn`, {withCredentials: true})
     .then(res => {
         setUser(res.data._id);
         localStorage.setItem('User', res.data._id);

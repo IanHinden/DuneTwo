@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios';
 import PostCard from '../components/PostCard'
 import { UserContext } from "../UserContext";
+import config from "../config.json";
 
 function Posts() {
     const [posts, setPosts] = useState([]);
@@ -13,7 +14,7 @@ function Posts() {
 
     const getAllPosts = () => {
         return axios
-            .get('http://localhost:5000/posts', {
+            .get(`${config.SERVER_URL}posts`, {
                     withCredentials: true
                 },
             )

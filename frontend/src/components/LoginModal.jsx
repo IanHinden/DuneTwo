@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter, faInstagram, faFacebook} from "@fortawesome/free-brands-svg-icons"
 import { UserContext } from "../UserContext";
 import "./LoginModal.css";
+import config from "../config.json";
 
 export default function InfoModal(props) {
     const {setUser} = useContext(UserContext);
@@ -35,7 +36,7 @@ export default function InfoModal(props) {
         };
 
         axios
-            .post("http://localhost:5000/register_login", userData, {withCredentials: true})
+            .post(`${config.SERVER_URL}register_login`, userData, {withCredentials: true})
             .then(res => {
                 setUser(JSON.stringify(res.data.user));
                 handleClose();
