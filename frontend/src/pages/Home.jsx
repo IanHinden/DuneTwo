@@ -55,7 +55,7 @@ function Home() {
                                 </div>
                             </div>
                             <div className="article-content">
-                                <p>{blog.content}</p>
+                                <div dangerouslySetInnerHTML={{__html: blog.content}}></div>
                             </div>
                         </article>
                     </div>
