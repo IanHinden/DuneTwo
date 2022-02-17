@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     axios
-    .get(`${config.SERVER_URL}/isLoggedIn`, {withCredentials: true})
+    .get(`${config.SERVER_URL}isLoggedIn`, {withCredentials: true})
     .then(res => {
         setUser(res.data._id);
         localStorage.setItem('User', res.data._id);
