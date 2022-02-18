@@ -7,12 +7,10 @@ const TwitterStrategy = require("passport-twitter").Strategy;
 require('dotenv').config()
 
 passport.serializeUser((user, done) => {
-    console.log("Serialized", user)
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    console.log("Trying this");
     User.findById(id, (err, user) => {
         done(err, user);
     });
@@ -27,13 +25,11 @@ passport.use(
                 // Create new User
                 if (!user) {
                     const newUser = new User({ email, password });
-                    console.log(newUser);
                     // Hash password before saving in database
                     bcrypt.genSalt(12, (err, salt) => {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
                             if (err) throw err;
                             newUser.password = hash;
-                            console.log(newUser.password);
                             newUser
                                 .save()
                                 .then(user => {
@@ -74,14 +70,12 @@ passport.use(new TwitterStrategy({
     includeEmail: true,
   },
   async (token, tokenSecret, profile, cb) => {
-    console.log(profile);
     User.findOne({ email: profile.emails[0].value })
     .then(user => {
         // Create new User
         if (!user) {
             return cb(null, false, { message: "No user" });
         } else {
-            console.log("We got a user", user);
             return cb(null, user);
         }
     })
