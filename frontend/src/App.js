@@ -10,7 +10,7 @@ import Navbar from './components/Navbar';
 import Jumbotron from './components/Jumbotron';
 import Home from './pages/Home'
 import CreatePost from './pages/CreatePost';
-import Posts from './pages/Posts';
+import Prompts from './pages/Prompts';
 
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
         <Jumbotron />
           <Routes>
             <Route path="/" exact element={<Home />}/>
-            <Route path="/posts/:id" element={<Posts />}/>
+            <Route path="/prompts/:id" element={<Prompts />}/>
             <Route path="/create" element ={<CreatePost />}/>
           </Routes>
       </UserContext.Provider>

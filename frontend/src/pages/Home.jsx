@@ -42,7 +42,7 @@ function Home() {
                         <article className="article">
                             <div className="article-img">
                                 <Voting prompt={prompts.prompt} promptId={prompts._id} aChoice={prompts.aChoice} bChoice={prompts.bChoice} aVotes={prompts.aVotes} bVotes={prompts.bVotes} aLikes={prompts.aLikes} bLikes={prompts.bLikes}/>
-                                <Link to={`/posts/${prompts._id}`}>Join Discussion</Link>
+                                <Link to={`/prompts/${prompts._id}`}>Join Discussion</Link>
                             </div>
                             <div className="article-title">
                                 <h2>{blog.title}</h2>
