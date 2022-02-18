@@ -11,6 +11,15 @@ const getAllPrompts = (req, res) => {
     })
 }
 
+const getPrompt = async (req, res) => {
+    try {
+        const prompt = await promptModel.findById(req.params.promptId);
+        res.status(200).json({"Data": prompt});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
 const getLatestPrompt = (req, res) => {
     promptModel.findOne().sort({$natural: -1}).limit(1).exec(function(err, data){
         if(err){
@@ -48,8 +57,8 @@ const votePrompt = async (req, res) => {
             res.status(200).json({"Updated": true});
         }
     } catch (err) {
-            res.status(500).json(err);
+        res.status(500).json(err);
     }
 }
 
-module.exports = { getAllPrompts, getLatestPrompt, votePrompt }
+module.exports = { getAllPrompts, getPrompt, getLatestPrompt, votePrompt }
