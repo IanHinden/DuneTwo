@@ -33,7 +33,7 @@ function Prompts() {
         return axios
             .get(`${config.SERVER_URL}prompt/${id}`, { withCredentials: true })
             .then((res) => {
-                setPrompt(res.data);
+                setPrompt(res.data.Data);
             })
             .catch((err) => console.log(err));
         } else {
