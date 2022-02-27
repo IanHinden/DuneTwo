@@ -7,6 +7,11 @@
 }
 /* Blog 
 ---------------------*/
+
+#outblog {
+  padding: 0px;
+}
+
 .blog-grid {
   box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
   border-radius: 5px;

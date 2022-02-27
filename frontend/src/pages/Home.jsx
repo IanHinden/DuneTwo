@@ -34,7 +34,7 @@ function Home() {
             .catch((err) => console.log(err));
     }
 
-    return <div className="container">
+    return <div className="container" id="outblog">
         <div className="blog-single gray-bg">
             <div className="container">
                 <div className="row align-items-start">
