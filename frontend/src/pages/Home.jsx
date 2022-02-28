@@ -1,7 +1,6 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import axios from 'axios';
-import { UserContext } from "../UserContext";
 import Voting from "../components/Voting";
 import './Home.css';
 import config from "../config.json";
@@ -9,7 +8,6 @@ import config from "../config.json";
 function Home() {
     const [prompts, setPrompts] = useState([]);
     const [blog, setBlog] = useState({});
-    const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
         getAllPrompts();
