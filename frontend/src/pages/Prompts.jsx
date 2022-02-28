@@ -1,29 +1,51 @@
 import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios';
-import PostCard from '../components/PostCard'
+import PostCard from '../components/PostCard';
+import SubmitEditCard from '../components/SubmitEditCard';
 import { UserContext } from "../UserContext";
 import config from "../config.json";
 import { useParams } from "react-router-dom";
 
 function Prompts() {
     const { id } = useParams();
-    const [posts, setPosts] = useState([]);
+    const [userPost, setUserPost] = useState([]);
+    const [aPosts, setAPosts] = useState([]);
+    const [bPosts, setBPosts] = useState([]);
     const [prompt, setPrompt] = useState([]);
     const {user} = useContext(UserContext);
 
     useEffect(() => {
-        getAllPosts();
+        getAllPosts(user);
         getPrompt({id}.id);
-    }, [id]);
+    }, [id, user]);
 
-    const getAllPosts = () => {
+    const getAllPosts = (user) => {
         return axios
             .get(`${config.SERVER_URL}posts`, {
                     withCredentials: true
                 },
             )
             .then((res) => {
-                setPosts(res.data);
+                const userPost = [];
+                const aPosts = [];
+                const bPosts = [];
+
+                res.data.forEach(post => {
+                    if(post.userId === user){
+                        userPost.push(post);
+                        return;
+                    } else {
+                        if(post.support === "a"){
+                            aPosts.push(post);
+                        } else {
+                            bPosts.push(post);
+                        }
+                    }
+                })
+
+                setUserPost(userPost);
+                setAPosts(aPosts);
+                setBPosts(bPosts);
             })
             .catch((err) => console.log(err));
     }
@@ -55,26 +77,26 @@ function Prompts() {
                             <div className="container">
                                 <h1>Prompt!</h1>
                                 <p>Your Answer: </p>
-                                {posts.map((post) => (
-                                    post.userId === user ? 
+                                    {userPost.length > 0 ? 
                                         <div>
-                                            <p>Post</p>
-                                            <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
+                                            <SubmitEditCard key={userPost[0].title} editMode={true} postId={userPost[0]._id} title={userPost[0].title} votes={userPost[0].votes} liked={userPost[0].likes}/>
                                         </div>
-                                        : null
-                                ))}
+                                        : <div>
+                                            <SubmitEditCard editMode={false} votes={0}/>
+                                        </div>
+                                    }
                                 <h2>{prompt.prompt}</h2>
                                 <div className="row">
                                     <div className="col">
                                         <h3>{prompt.aChoice}</h3>
-                                        {posts.map((post) => (
-                                            post.support === "a" && post.userId !== user ? <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/> : null
+                                        {aPosts.map((post) => (
+                                            <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
                                         ))}
                                     </div>
                                     <div className="col">
                                         <h3>{prompt.bChoice}</h3>
-                                        {posts.map((post) => (
-                                            post.support === "b" && post.userId !== user ? <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/> : null
+                                        {bPosts.map((post) => (
+                                            <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
                                         ))}
                                     </div>
                                 </div>
