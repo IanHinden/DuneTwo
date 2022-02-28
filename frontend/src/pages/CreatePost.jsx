@@ -21,16 +21,35 @@ function CreatePost() {
     function handleClick(event) {
         event.preventDefault();
         const newNote = {
+            support: input.support,
             title: input.title,
             content: input.content,
         }
-        
+
         axios.post('http://localhost:5000/createPost', newNote, { withCredentials: true },);
     }
 
     return <div className="container">
         <h1>Create Post Page</h1>
         <form>
+            <div className="radio-buttons">
+                Option A
+                <input
+                    id="a"
+                    value="a"
+                    name="support"
+                    type="radio"
+                    onChange={handleChange}
+                />
+                Option B
+                <input
+                    id="b"
+                    value="b"
+                    name="support"
+                    type="radio"
+                    onChange={handleChange}
+                />
+            </div>
             <div className='form-group'>
                 <input onChange={handleChange} name="title" value={input.title} autoComplete="off" className='form-control' placeholder="Post Title"></input>
             </div>

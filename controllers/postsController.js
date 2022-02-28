@@ -15,12 +15,14 @@ const createPost = (req, res) => {
     const title = req.body.title;
     const content = req.body.content;
     const userId = req.user._id.toString();
+    const support = req.body.support;
     const votes = 0;
     const newPost = new postModel({
         title,
         content,
         votes,
-        userId
+        userId,
+        support
     });
 
     try {

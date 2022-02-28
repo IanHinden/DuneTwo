@@ -54,19 +54,27 @@ function Prompts() {
                         <article className="article">
                             <div className="container">
                                 <h1>Prompt!</h1>
-                                {user}
+                                <p>Your Answer: </p>
+                                {posts.map((post) => (
+                                    post.userId === user ? 
+                                        <div>
+                                            <p>Post</p>
+                                            <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
+                                        </div>
+                                        : null
+                                ))}
                                 <h2>{prompt.prompt}</h2>
                                 <div className="row">
                                     <div className="col">
                                         <h3>{prompt.aChoice}</h3>
                                         {posts.map((post) => (
-                                            post.support === "a" ? <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/> : null
+                                            post.support === "a" && post.userId !== user ? <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/> : null
                                         ))}
                                     </div>
                                     <div className="col">
                                         <h3>{prompt.bChoice}</h3>
                                         {posts.map((post) => (
-                                            post.support === "b" ? <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/> : null
+                                            post.support === "b" && post.userId !== user ? <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/> : null
                                         ))}
                                     </div>
                                 </div>
