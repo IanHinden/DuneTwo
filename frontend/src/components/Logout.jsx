@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import config from "../config.json";
 import { UserContext } from "../UserContext";
 
 function Logout() {
@@ -8,7 +9,7 @@ function Logout() {
         e.preventDefault();
 
         axios
-            .delete("http://localhost:5000/logout", {withCredentials: true})
+            .delete(`${config.SERVER_URL}logout`, {withCredentials: true})
             .then(res => {
                 console.log(res);
                 setUser(null);

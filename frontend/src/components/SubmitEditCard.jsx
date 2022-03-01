@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
+import config from "../config.json";
 import './SubmitEditCard.css';
 
 function PostCard(props) {
@@ -32,7 +33,7 @@ function PostCard(props) {
             content: input.content,
         }
 
-        return axios.post('http://localhost:5000/createPost', newNote, { withCredentials: true })
+        return axios.post(`${config.SERVER_URL}createPost`, newNote, { withCredentials: true })
         .then((res) => {
             setEditMode(true);
             setTitle(input.title);
