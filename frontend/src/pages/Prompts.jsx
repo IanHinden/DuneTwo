@@ -76,16 +76,21 @@ function Prompts() {
                         <article className="article">
                             <div className="container">
                                 <h1>Prompt!</h1>
+                                <h2>{prompt.prompt}</h2>
                                 <p>Your Answer: </p>
-                                    {userPost.length > 0 ? 
+                                {user ? 
+                                    <div>{userPost.length > 0 ? 
                                         <div>
                                             <SubmitEditCard key={userPost[0].title} editMode={true} postId={userPost[0]._id} title={userPost[0].title} votes={userPost[0].votes} liked={userPost[0].likes}/>
                                         </div>
                                         : <div>
-                                            <SubmitEditCard editMode={false} votes={0}/>
+                                            <SubmitEditCard editMode={false} votes={0} optionA={prompt.aChoice} optionB={prompt.bChoice}/>
                                         </div>
                                     }
-                                <h2>{prompt.prompt}</h2>
+                                    </div>
+                                    :
+                                    <p>Log in to Vote</p>
+                                }
                                 <div className="row">
                                     <div className="col">
                                         <h3>{prompt.aChoice}</h3>
