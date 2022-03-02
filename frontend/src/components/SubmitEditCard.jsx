@@ -7,8 +7,8 @@ import './SubmitEditCard.css';
 
 function PostCard(props) {
     const [editMode, setEditMode] = useState(props.editMode);
-	const [count] = useState( props.votes );
-    const [title, setTitle] = useState( props.title);
+	const [count] = useState(props.votes);
+    const [title, setTitle] = useState(props.title);
     const [input, setInput] = useState({
         title: '',
         content: ''
@@ -47,7 +47,7 @@ function PostCard(props) {
                 {title}
             </p>
             <FontAwesomeIcon icon={faThumbsUp} />
-            {props.votes > 0 ? + {count} : null}
+            + {count}
         </div>
         :
         <div>
