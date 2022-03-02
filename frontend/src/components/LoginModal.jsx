@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import {Modal} from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter, faInstagram, faFacebook} from "@fortawesome/free-brands-svg-icons"
+import { faTwitter/*, faInstagram, faFacebook*/} from "@fortawesome/free-brands-svg-icons"
 import { UserContext } from "../UserContext";
 import "./LoginModal.css";
 import config from "../config.json";
@@ -62,22 +62,18 @@ export default function InfoModal(props) {
               <div className="md-form pb-3">
                 <input onChange={handleChange} name="password" type="password" value={input.password} id="Form-pass1" className="form-control validate"></input>
                 <label data-error="wrong" data-success="right" htmlFor="Form-pass1">Your password</label>
-                  <p className="font-small blue-text d-flex justify-content-end">Forgot <a href="www.forgot.com" className="blue-text ml-1">
-                    Password?</a></p>
               </div>
               <div className="text-center mb-3">
-                <button type="button" onClick={onSubmit} className="btn blue-gradient btn-block btn-rounded">Sign in</button>
+                <Button className="btn blue-gradient btn-block btn-rounded z-depth-1a" onClick={onSubmit}>Sign in</Button>
               </div>
               <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
               with:</p>
               <div className="row my-3 d-flex justify-content-around">
-                <button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faFacebook} /></button>
-                <a href={`${config.SERVER_URL}`+ 'auth/twitter'}><button type="button" className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-twitter" icon={faTwitter} /></button></a>
-                <button type="button" className="btn btn-white btn-rounded z-depth-1a"><FontAwesomeIcon className="fab fa-facebook-f text-center" icon={faInstagram} /></button>
+                <a href={`${config.SERVER_URL}auth/twitter`} className="btn btn-white btn-rounded mr-md-3 z-depth-1a"><FontAwesomeIcon className="fab fa-twitter" icon={faTwitter} /></a>
               </div>
             </Modal.Body>
             <Modal.Footer>
-            <p className="font-small grey-text d-flex justify-content-end">Not a member? <a href="/" className="blue-text ml-1">
+            <p className="font-small grey-text d-flex justify-content-end">Not a member? <a href="/signup" className="blue-text ml-1">
               Sign Up</a></p>
             </Modal.Footer>
           </div>

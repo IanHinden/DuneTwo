@@ -37,7 +37,7 @@ function Voting(props) {
         return axios
             .post('http://localhost:5000/votePrompt', newPromptVote, {withCredentials: true})
             .then((res) => {
-                if(option == 0){
+                if(option === 0){
                     setALikedStatus(!aLikeStatus);
                     aLikeStatus ? setAVotes(aVotes - 1) : setAVotes(aVotes + 1);
                     if(bLikeStatus){
