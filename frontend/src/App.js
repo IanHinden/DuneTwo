@@ -9,7 +9,7 @@ import axios from "axios";
 import Navbar from './components/Navbar';
 import Jumbotron from './components/Jumbotron';
 import Home from './pages/Home'
-import CreatePost from './pages/CreatePost';
+import Blogs from './pages/Blogs';
 import Prompts from './pages/Prompts';
 
 
@@ -39,8 +39,8 @@ function App() {
         <Jumbotron />
           <Routes>
             <Route path="/" exact element={<Home />}/>
+            <Route path="/blogs" element ={<Blogs />}/>
             <Route path="/prompts/:id" element={<Prompts />}/>
-            <Route path="/create" element ={<CreatePost />}/>
           </Routes>
       </UserContext.Provider>
       </Router>
