@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Navbar, Container, Nav} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter, faGithub, faInstagram, faGooglePlus } from "@fortawesome/free-brands-svg-icons"
+import { faTwitter, faGithub, faInstagram, faGooglePlus, faTiktok } from "@fortawesome/free-brands-svg-icons"
 import Logout from "./Logout";
 import LoginModal from "./LoginModal";
 import { UserContext } from "../UserContext";
@@ -29,6 +29,7 @@ function NavbarDiscard() {
                         <li className="nav-item"><a className="nav-link" href="https://github.com/IanHinden"><FontAwesomeIcon icon={faGithub} /></a></li>
                         <li className="nav-item"><a className="nav-link" href="https://instagram.com/IanHinden"><FontAwesomeIcon icon={faInstagram} /></a></li>
                         <li className="nav-item"><a className="nav-link" href="https://instagram.com/IanHinden"><FontAwesomeIcon icon={faGooglePlus} /></a></li>
+                        <li className="nav-item"><a className="nav-link" href="https://tiktok.com/@HateFilledBox"><FontAwesomeIcon icon={faTiktok} /></a></li>
                     </Nav>
                     <Nav className="navbar-nav mr-auto">
                         <li className="nav-item">
