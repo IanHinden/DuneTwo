@@ -21,7 +21,7 @@ function NavbarDiscard() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Link className="nav-text nav-link" to="/">Home</Link>
-                        <Link className="nav-text nav-link" to="/blogs">Blogs</Link>
+                        <Link className="nav-text nav-link" to="/blogs/0">Blogs</Link>
                         <Link className="nav-text nav-link" to="/prompts/0">Prompts</Link>
                     </Nav>
                     <Nav className="navbar-nav sm-icons">

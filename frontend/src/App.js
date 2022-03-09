@@ -39,7 +39,7 @@ function App() {
         <Jumbotron />
           <Routes>
             <Route path="/" exact element={<Home />}/>
-            <Route path="/blogs" element ={<Blogs />}/>
+            <Route path="/blogs/:id" element ={<Blogs />}/>
             <Route path="/prompts/:id" element={<Prompts />}/>
           </Routes>
       </UserContext.Provider>

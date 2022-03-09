@@ -27,6 +27,15 @@ const createBlog = (req, res) => {
     }
 }
 
+const getBlog = async (req, res) => {
+    try {
+        const prompt = await blogModel.findById(req.params.blogId);
+        res.status(200).json({"Data": prompt});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
 const getLatestBlog = (req, res) => {
     blogModel.findOne().sort({$natural: -1}).limit(1).exec(function(err, data){
         if(err){
@@ -39,4 +48,4 @@ const getLatestBlog = (req, res) => {
     })
 }
 
-module.exports = { getAllBlogs, getLatestBlog, createBlog }
+module.exports = { getAllBlogs, getLatestBlog, createBlog, getBlog }
