@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import Voting from "../components/Voting";
+import Footer from "../components/Footer";
 import './Home.css';
 import config from "../config.json";
 
@@ -80,6 +81,7 @@ function Home() {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 }
 
