@@ -71,7 +71,7 @@ function Blogs() {
                                 <h3>Blog Archive</h3>
                             </div>
                             <div className="widget-body">
-                                {blogs.map(blog => (<Link to={`/blogs/${blog._id}`}><li key={blog._id}>{blog.title}</li></Link>))}
+                                {blogs.map(blog => (<li key={blog._id}><Link to={`/blogs/${blog._id}`}>{blog.title}</Link></li>))}
                             </div>
                         </div>
                     </div>
