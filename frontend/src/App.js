@@ -11,6 +11,8 @@ import Jumbotron from './components/Jumbotron';
 import Home from './pages/Home'
 import Blogs from './pages/Blogs';
 import Prompts from './pages/Prompts';
+import Terms from './pages/Terms';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
             <Route path="/" exact element={<Home />}/>
             <Route path="/blogs/:id" element ={<Blogs />}/>
             <Route path="/prompts/:id" element={<Prompts />}/>
+            <Route path="/termsofservice" element={<Terms />}/>
+            <Route path="/privacypolicy" element={<PrivacyPolicy />}/>
           </Routes>
       </UserContext.Provider>
       </Router>
