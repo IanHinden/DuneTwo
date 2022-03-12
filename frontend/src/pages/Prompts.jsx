@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios';
 import PostCard from '../components/PostCard';
 import SubmitEditCard from '../components/SubmitEditCard';
+import Footer from "../components/Footer";
 import { UserContext } from "../UserContext";
 import config from "../config.json";
 import { useParams } from "react-router-dom";
@@ -70,7 +71,7 @@ function Prompts() {
 
     return <div className="container">
         <div className="blog-single gray-bg">
-            <div className="container">
+            <div className="container" id="outblog">
                 <div className="row align-items-start">
                     <div className="col-lg-8 m-15px-tb">
                         <article className="article">
@@ -129,6 +130,7 @@ function Prompts() {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 }
 

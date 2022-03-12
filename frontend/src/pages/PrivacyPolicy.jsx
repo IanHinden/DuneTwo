@@ -1,7 +1,8 @@
 import React from "react";
+import Footer from "../components/Footer";
 
 function PrivacyPolicy() {
-    return <div className="container">
+    return <div className="container" id="outblog">
         <div className="blog-single gray-bg">
             <div className="container">
                 <div className="article">
@@ -10,6 +11,7 @@ function PrivacyPolicy() {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 }
 
