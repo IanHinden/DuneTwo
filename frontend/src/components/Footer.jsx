@@ -20,7 +20,7 @@ function Footer() {
         <div className="col-lg-3 col-xs-12 links">
         <h4 className="mt-lg-0 mt-sm-3">Other Things I Made</h4>
             <ul className="m-0 p-0">
-            <li><a href="http://thegarbage.org">The Garbage</a></li>
+            <li><a href="http://thegarbage.org">The Garb Age</a></li>
             <li><a href="http://www.pyramidschemecosmetics.com">Pyramid Scheme Cosmetics</a></li>
             <li>Terrible, horrible mistakes. :(</li>
             </ul>
