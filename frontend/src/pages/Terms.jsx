@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Footer from "../components/Footer";
 
 function Terms() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return <div className="container" id="outblog">
             <div className="container">
                 <div className="article">

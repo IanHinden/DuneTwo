@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Footer from "../components/Footer";
 
 function PrivacyPolicy() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return <div className="container" id="outblog">
         <div className="blog-single gray-bg">
             <div className="container">
