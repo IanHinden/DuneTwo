@@ -13,6 +13,7 @@ import Blogs from './pages/Blogs';
 import Prompts from './pages/Prompts';
 import Terms from './pages/Terms';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Signup from './pages/Signup';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/prompts/:id" element={<Prompts />}/>
             <Route path="/termsofservice" element={<Terms />}/>
             <Route path="/privacypolicy" element={<PrivacyPolicy />}/>
+            <Route path="/signup" element={<Signup />}/>
           </Routes>
       </UserContext.Provider>
       </Router>
