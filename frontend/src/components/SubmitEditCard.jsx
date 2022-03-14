@@ -6,11 +6,10 @@ import config from "../config.json";
 import './SubmitEditCard.css';
 
 function PostCard(props) {
+    let [content, setContent] = useState('');
     const [editMode, setEditMode] = useState(props.editMode);
 	const [count] = useState(props.votes);
-    const [title, setTitle] = useState(props.title);
     const [input, setInput] = useState({
-        title: '',
         content: ''
     })
 
@@ -29,14 +28,13 @@ function PostCard(props) {
         event.preventDefault();
         const newNote = {
             support: input.support,
-            title: input.title,
             content: input.content,
         }
 
         return axios.post(`${config.SERVER_URL}createPost`, newNote, { withCredentials: true })
         .then((res) => {
             setEditMode(true);
-            setTitle(input.title);
+            setContent(input.content);
         })
         .catch((err) => console.log(err));
     }
@@ -44,7 +42,7 @@ function PostCard(props) {
 	return <div className="submiteditcard">
         { editMode ? <div>
             <p>
-                {title}
+                {content}
             </p>
             <FontAwesomeIcon icon={faThumbsUp} />
             + {count}
@@ -70,10 +68,6 @@ function PostCard(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className='form-group'>
-                    <input onChange={handleChange} name="title" value={input.title} autoComplete="off" className='form-control' placeholder="Post Title"></input>
-                </div>
-
                 <div className='form-group'>
                     <textarea onChange={handleChange} name="content" value={input.content} autoComplete="off" className='form-control' placeholder="Post Content"></textarea>
                 </div>

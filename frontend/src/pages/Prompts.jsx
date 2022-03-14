@@ -84,7 +84,7 @@ function Prompts() {
                                 <div><p>Your Answer: </p>
                                     <div>{userPost.length > 0 ? 
                                         <div>
-                                            <SubmitEditCard key={userPost[0].title} editMode={true} postId={userPost[0]._id} title={userPost[0].title} votes={userPost[0].votes} liked={userPost[0].likes}/>
+                                            <SubmitEditCard key={userPost[0].title} editMode={true} postId={userPost[0]._id} content={userPost[0].content} votes={userPost[0].votes} liked={userPost[0].likes}/>
                                         </div>
                                         : <div>
                                             <SubmitEditCard editMode={false} votes={0} optionA={prompt.aChoice} optionB={prompt.bChoice}/>
@@ -99,13 +99,13 @@ function Prompts() {
                                     <div className="col">
                                         <h3>{prompt.aChoice}</h3>
                                         {aPosts.map((post) => (
-                                            <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
+                                            <PostCard key={post.title} postId={post._id} content={post.content} votes={post.votes} liked={post.likes}/>
                                         ))}
                                     </div>
                                     <div className="col">
                                         <h3>{prompt.bChoice}</h3>
                                         {bPosts.map((post) => (
-                                            <PostCard key={post.title} postId={post._id} title={post.title} votes={post.votes} liked={post.likes}/>
+                                            <PostCard key={post.title} postId={post._id} content={post.content} votes={post.votes} liked={post.likes}/>
                                         ))}
                                     </div>
                                 </div>

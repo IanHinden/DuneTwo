@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const postSchema = {
-    title: String,
     content: String,
     support: String,
     votes: Number,

@@ -39,7 +39,7 @@ function PostCard(props) {
 	return <div className="card">
         <LoginModal value={{setUser}} show={show} setShow={setShow}/>
 		<p>
-			{props.title}
+			{props.content}
 		</p>
         {user ? <FontAwesomeIcon onClick={() => voteUp(props.postId)} className = {liked ? "likedIcon" : ""} icon={faThumbsUp} /> :
         <FontAwesomeIcon onClick={() => setShow(true)} icon={faThumbsUp} />
