@@ -8,6 +8,7 @@ import config from "../config.json";
 
 function Signup() {
     const {user, setUser} = useContext(UserContext);
+    const [errorDisplay, setErrorDisplay] = useState('');
     const [input, setInput] = useState({
         email: '',
         password: ''
@@ -24,7 +25,19 @@ function Signup() {
         })
     }
 
+    function emailValidation(){
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if(regex.test(input.email) === false){
+            return false;
+        }
+        return true;
+    }
+
     const onSubmit = (e) => {
+        if(emailValidation() === false) {
+            setErrorDisplay("Please enter a valid e-mail address.")
+        } else {
+        setErrorDisplay("")
         e.preventDefault();
 
         const userData = {
@@ -41,6 +54,7 @@ function Signup() {
                 console.log(err);
                 console.log(err.response);
             });
+        }
     };
 
     return <div className="container" id="outblog">
@@ -51,6 +65,7 @@ function Signup() {
             <div className="md-form mb-5">
                 <input onChange={handleChange} name="email" value={input.email} type="email" id="Form-email1" className="form-control validate"></input>
                 <label data-error="wrong" data-success="right" htmlFor="Form-email1">Your email</label>
+                <label className="error">{errorDisplay}</label>
               </div>
               <div className="md-form pb-3">
                 <input onChange={handleChange} name="password" type="password" value={input.password} id="Form-pass1" className="form-control validate"></input>

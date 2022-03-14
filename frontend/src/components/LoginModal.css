@@ -25,3 +25,8 @@
 .blue-text {
     margin-left: 5px;
 }
+
+.error {
+    display: block;
+    color: red;
+}
