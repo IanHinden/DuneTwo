@@ -5,6 +5,7 @@ import SubmitEditCard from '../components/SubmitEditCard';
 import Footer from "../components/Footer";
 import { UserContext } from "../UserContext";
 import config from "../config.json";
+import LoginModal from "../components/LoginModal";
 import { useParams } from "react-router-dom";
 
 function Prompts() {
@@ -13,7 +14,8 @@ function Prompts() {
     const [aPosts, setAPosts] = useState([]);
     const [bPosts, setBPosts] = useState([]);
     const [prompt, setPrompt] = useState([]);
-    const {user} = useContext(UserContext);
+    const [show, setShow] = useState(false);
+    const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
         getAllPosts(user);
@@ -78,8 +80,8 @@ function Prompts() {
                             <div className="container">
                                 <h1>Prompt!</h1>
                                 <h2>{prompt.prompt}</h2>
-                                <p>Your Answer: </p>
                                 {user ? 
+                                <div><p>Your Answer: </p>
                                     <div>{userPost.length > 0 ? 
                                         <div>
                                             <SubmitEditCard key={userPost[0].title} editMode={true} postId={userPost[0]._id} title={userPost[0].title} votes={userPost[0].votes} liked={userPost[0].likes}/>
@@ -89,8 +91,9 @@ function Prompts() {
                                         </div>
                                     }
                                     </div>
+                                </div>
                                     :
-                                    <p>Log in to Vote</p>
+                                    <button onClick={() => setShow(true)} type="button" className="btn btn-outline-primary">Login</button>
                                 }
                                 <div className="row">
                                     <div className="col">
@@ -130,6 +133,7 @@ function Prompts() {
                 </div>
             </div>
         </div>
+        <LoginModal value={{setUser}} show={show} setShow={setShow}/>
         <Footer />
     </div>
 }
