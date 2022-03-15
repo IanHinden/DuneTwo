@@ -3,6 +3,7 @@ import {Button} from 'react-bootstrap';
 import axios from "axios";
 import LoginModal from './LoginModal';
 import { UserContext } from "../UserContext";
+import config from "../config.json";
 import './Voting.css';
 
 function Voting(props) {
@@ -35,7 +36,7 @@ function Voting(props) {
         };
 
         return axios
-            .post('http://localhost:5000/votePrompt', newPromptVote, {withCredentials: true})
+            .post(`${config.SERVER_URL}votePrompt`, newPromptVote, {withCredentials: true})
             .then((res) => {
                 if(option === 0){
                     setALikedStatus(!aLikeStatus);
