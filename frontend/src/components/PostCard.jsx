@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 import { UserContext } from "../UserContext";
+import config from "../config.json";
 import LoginModal from "./LoginModal";
 import './PostCard.css';
 
@@ -23,7 +24,7 @@ function PostCard(props) {
             postId: id,
         }
         return axios
-            .post('http://localhost:5000/vote', newVote, {withCredentials: true})
+            .post(`${config.SERVER_URL}vote`, newVote, {withCredentials: true})
             .then((res) => {
                 if(res.data.Liked){
                     setCount(count + 1);
