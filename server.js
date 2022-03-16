@@ -60,6 +60,7 @@ app.use('/', require('./routes/postRoutes'));
 app.use('/', require('./routes/promptRoutes'));
 app.use('/', require('./routes/userRoutes'));
 app.use('/', require('./routes/blogRoutes'));
+app.use('/', require('./routes/emailRoutes'));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
