@@ -15,8 +15,8 @@ const confirmation = (req, res) => {
 	let mailOptions = {
 		from: 'ian@getmeindunetwo.com',
 		to: "Ian.Hinden@gmail.com",
-		subject: "Test",
-		html: "Test",
+		subject: "Please Confirm Your E-mail Address",
+		html: req.message,
 	};
 
   	transporter.sendMail(mailOptions, (error, info) => {

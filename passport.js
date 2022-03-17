@@ -1,5 +1,8 @@
 const bcrypt = require("bcryptjs");
 const User = require("./models/userModel");
+const Token = require("./models/tokenModel");
+const crypto = require("crypto");
+const emailsController = require("./controllers/emailsController");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const TwitterStrategy = require("passport-twitter").Strategy;
@@ -33,6 +36,13 @@ passport.use(
                             newUser
                                 .save()
                                 .then(user => {
+                                    //Generate token and email to user
+                                    let token = new Token({
+                                        userId: user.id,
+                                        token: crypto.randomBytes(32).toString("hex"),
+                                      }).save();
+
+                                    emailsController.confirmation({message: email});
                                     return done(null, user);
                                 })
                                 .catch(err => {
