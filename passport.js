@@ -36,13 +36,14 @@ passport.use(
                             newUser
                                 .save()
                                 .then(user => {
+                                    let tokenCrypt = crypto.randomBytes(32).toString("hex");
                                     //Generate token and email to user
                                     let token = new Token({
                                         userId: user.id,
-                                        token: crypto.randomBytes(32).toString("hex"),
+                                        token: tokenCrypt,
                                       }).save();
 
-                                    emailsController.confirmation({message: email});
+                                    emailsController.confirmation({token: tokenCrypt, email: email});
                                     return done(null, user);
                                 })
                                 .catch(err => {

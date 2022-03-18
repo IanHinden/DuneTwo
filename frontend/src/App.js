@@ -14,6 +14,7 @@ import Prompts from './pages/Prompts';
 import Terms from './pages/Terms';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Signup from './pages/Signup';
+import Confirmation from './pages/Confirmation';
 
 
 function App() {
@@ -47,6 +48,8 @@ function App() {
             <Route path="/termsofservice" element={<Terms />}/>
             <Route path="/privacypolicy" element={<PrivacyPolicy />}/>
             <Route path="/signup" element={<Signup />}/>
+            <Route path="/confirmation/:token" element={<Confirmation />}/>
+            <Route path="/confirmation/" element={<Confirmation />}/>
           </Routes>
       </UserContext.Provider>
       </Router>

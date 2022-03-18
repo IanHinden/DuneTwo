@@ -12,6 +12,7 @@ router.post('/register_login', userController.register_login);
 router.get('/isLoggedIn', userController.isLoggedIn);
 router.delete('/logout', userController.logoutUser);
 router.get('/userstatus', userController.isLoggedIn);
+router.post('/verify', userController.verify)
 
 router.get('/auth/twitter',
   passport.authenticate('twitter'));

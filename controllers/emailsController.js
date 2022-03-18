@@ -2,7 +2,7 @@ nodeMailer = require('nodemailer');
 
 require('dotenv').config()
 
-const confirmation = (req, res) => {
+const confirmation = async (req, res) => {
     let transporter = nodeMailer.createTransport({
 		host: 'mail.privateemail.com',
 		port: 465,
@@ -14,9 +14,9 @@ const confirmation = (req, res) => {
 	});
 	let mailOptions = {
 		from: 'ian@getmeindunetwo.com',
-		to: "Ian.Hinden@gmail.com",
-		subject: "Please Confirm Your E-mail Address",
-		html: req.message,
+		to: "Ian.Hinden@Gmail.com",//req.email,
+		subject: "Get Me In Dune 2 - Please Confirm Your E-mail Address",
+		html: "Hello! I am Ian, the creator of this site! I manually sent you this confirmation e-mail! Just kidding, it's automated. Please click this:" + process.env.BASE_URL + req.token
 	};
 
   	transporter.sendMail(mailOptions, (error, info) => {

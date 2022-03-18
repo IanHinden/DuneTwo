@@ -1,8 +1,8 @@
 const User = require('../models/userModel');
+const Token = require('../models/tokenModel');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 require('../passport');
-//const { session } = require('passport');
 const Post = require('../models/postModel');
 
 const register = (req, res) => {
@@ -108,6 +108,29 @@ const auth_twitter_callback = (req, res) => {
   }
 }
 
+const verify = async (req, res) => {
+  const { tokenId } = req.body;
+
+  console.log(tokenId);
+
+  try {
+    const token = await Token.findOne({
+      token: tokenId,
+    });
+    if (!token) return res.status(400).send("Invalid link");
+
+    const user = await User.findOne({ _id: token.userId });
+    if (!user) return res.status(400).send("Invalid link");
+
+    await User.updateOne({ _id: user._id}, { $set : {verified: true }});
+    await Token.findByIdAndRemove(token._id);
+
+    res.send("Email verified sucessfully.");
+  } catch (error) {
+    res.status(400).send("An error occured");
+  }
+}
+
 const isLoggedIn = (req, res) => {
   if(req.user){
     res.send(req.user);
@@ -116,4 +139,4 @@ const isLoggedIn = (req, res) => {
   }
 }
 
-module.exports = { register, login, register_login, logoutUser, isLoggedIn, twitter_login, auth_twitter_callback }
+module.exports = { register, login, register_login, logoutUser, isLoggedIn, twitter_login, auth_twitter_callback, verify }
