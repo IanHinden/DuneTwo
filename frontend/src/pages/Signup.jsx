@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import Footer from "../components/Footer";
 import axios from "axios";
@@ -7,7 +8,8 @@ import './Signup.css';
 import config from "../config.json";
 
 function Signup() {
-    const {user, setUser} = useContext(UserContext);
+    const navigate = useNavigate();
+    const {user} = useContext(UserContext);
     const [errorDisplay, setErrorDisplay] = useState('');
     const [input, setInput] = useState({
         email: '',
@@ -48,7 +50,8 @@ function Signup() {
         axios
             .post(`${config.SERVER_URL}register_login`, userData, {withCredentials: true})
             .then(res => {
-                setUser(JSON.stringify(res.data.user));
+                navigate("/confirmation");
+                //setUser(JSON.stringify(res.data.user));
             })
             .catch(err => {
                 console.log(err);

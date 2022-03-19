@@ -10,7 +10,7 @@ function Terms() {
             <div className="container">
                 <div className="article">
                     <h1>Terms of Service</h1>
-                    <div class="container marketing mt-4">
+                    <div className="container marketing mt-4">
                         <p>Last updated: March 12, 2022</p>
                         <p>Please read these terms and conditions carefully before using Our Service.</p>
                         <h1>Interpretation and Definitions</h1>
@@ -44,7 +44,7 @@ function Terms() {
                                 <p><strong>Third-party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.</p>
                             </li>
                             <li>
-                                <p><strong>Website</strong> refers to Get Me Into Dune Two, accessible from <a href="https://www.getmeintodunetwo.com" rel="external nofollow noopener" target="_blank">https://www.getmeintodunetwo.com</a></p>
+                                <p><strong>Website</strong> refers to Get Me Into Dune Two, accessible from <a href="https://www.getmeintodunetwo.com">https://www.getmeintodunetwo.com</a></p>
                             </li>
                             <li>
                                 <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>

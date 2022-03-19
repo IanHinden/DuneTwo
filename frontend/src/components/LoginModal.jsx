@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import {Modal, Button} from 'react-bootstrap';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -8,6 +9,7 @@ import "./LoginModal.css";
 import config from "../config.json";
 
 export default function InfoModal(props) {
+  const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
     const handleClose = () => props.setShow(false);
     const [errorDisplay, setErrorDisplay] = useState('');
@@ -51,8 +53,13 @@ export default function InfoModal(props) {
         axios
             .post(`${config.SERVER_URL}register_login`, userData, {withCredentials: true})
             .then(res => {
+              if(res.data.user.verified){
                 setUser(JSON.stringify(res.data.user));
                 handleClose();
+              } else {
+                handleClose();
+                navigate("/confirmation");
+              }
             })
             .catch(err => {
                 console.log(err);

@@ -6,7 +6,7 @@ import config from "../config.json";
 import './SubmitEditCard.css';
 
 function PostCard(props) {
-    let [content, setContent] = useState('');
+    let [content, setContent] = useState(props.content);
     const [editMode, setEditMode] = useState(props.editMode);
 	const [count] = useState(props.votes);
     const [input, setInput] = useState({

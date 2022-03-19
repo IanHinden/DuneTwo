@@ -82,7 +82,7 @@ const register_login = (req, res, next) => {
           if (err) {
               return res.status(400).json({ errors: err });
           }
-          return res.status(200).json({user: {id: user.id}});
+          return res.status(200).json({user: {id: user.id, verified: user.verified}});
       });
   })(req, res, next);
 };
@@ -110,8 +110,6 @@ const auth_twitter_callback = (req, res) => {
 
 const verify = async (req, res) => {
   const { tokenId } = req.body;
-
-  console.log(tokenId);
 
   try {
     const token = await Token.findOne({
